@@ -1,12 +1,13 @@
     import jwt from 'jsonwebtoken';
-
+    import userModel from '../model/userModel.js'
     export const authorize = (req, res,next) =>{
         try {
             const { api_key } = req.query;
+            console.log(api_key)
             if (!api_key) {
                 return res.status(403).json({ message: 'Forbidden: API key is missing' });
             }
-    
+
             const token = api_key.split('-')[3];
     
             jwt.verify(token, process.env.SECRET_KEY, async (err, decoded) => {

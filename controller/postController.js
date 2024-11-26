@@ -21,7 +21,7 @@ export const postCreate = async(req,res) =>{
         }
 
         const newPost = new postModel({
-            userId: user.userId, 
+            userId: user._id, 
             content,
             createdAt: new Date(),
             updatedAt: new Date(),
